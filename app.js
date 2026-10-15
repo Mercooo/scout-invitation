@@ -326,25 +326,30 @@
     const r = reach.getBoundingClientRect();
     const g = clamp(-r.top / Math.max(1, r.height - innerHeight));
     const sw = stage.clientWidth, sh = stage.clientHeight;
-    const W = godEl.getBoundingClientRect().width, H = (W * 400) / 220;
     const e = ease(g);
-    const meetY = sh * 0.36;
-    const gap = Math.max(52, sh * 0.07);
+    const meetY = sh * 0.38;
+    const gap = Math.max(26, sw * 0.05);
 
-    // Fingertips sit at x=80/220 (His) and x=140/220 (yours, rotated 180°) of the hand width.
-    const godTop = lerp(-H, meetY - 0.8625 * H, e);
-    const youTop = lerp(sh * 0.92, meetY + gap - 0.1375 * H, e);
-    godEl.style.transform = `translate3d(${sw / 2 - (80 / 220) * W}px,${godTop}px,0)`;
-    youEl.style.transform = `translate3d(${sw / 2 - (140 / 220) * W}px,${youTop}px,0) rotate(180deg)`;
+    // Both hands are cut from the same painting, so they share one scale. The fingertip of each
+    // (Adam's at the right edge of his image, God's at the left edge of His) is where they meet.
+    const aW = youEl.getBoundingClientRect().width, aH = (aW * youEl.getAttribute("height")) / youEl.getAttribute("width");
+    const gW = godEl.getBoundingClientRect().width, gH = (gW * godEl.getAttribute("height")) / godEl.getAttribute("width");
+    const youX = lerp(-aW, sw / 2 - gap / 2 - 0.995 * aW, e);
+    const godX = lerp(sw, sw / 2 + gap / 2, e);
+    const youY = meetY - 0.373 * aH + (1 - e) * sh * 0.05;
+    const godY = meetY - 0.62 * gH - (1 - e) * sh * 0.05;
+    youEl.style.transform = `translate3d(${youX}px,${youY}px,0)`;
+    godEl.style.transform = `translate3d(${godX}px,${godY}px,0)`;
+    stage.style.setProperty("--glow", g.toFixed(3));
 
-    const midY = meetY + gap / 2;
+    const midY = meetY;
     flare.style.top = touch.style.top = `${midY}px`;
     flare.style.setProperty("--fs", (0.45 + 0.7 * g).toFixed(3));
     flare.style.setProperty("--fo", (Math.pow(g, 2.2) * 0.95).toFixed(3));
 
     caps.forEach(({ el, a, b }) => el.classList.toggle("on", g >= a && g < b));
 
-    if (g > 0.985 && !touched) { touched = true; touch.classList.add("on"); Sound.chime(); }
+    if (g > 0.985 && !touched) { touched = true; touch.classList.add("on"); }
     else if (g < 0.9 && touched) { touched = false; touch.classList.remove("on"); }
     return g;
   }

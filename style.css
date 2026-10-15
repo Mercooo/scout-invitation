@@ -202,9 +202,11 @@ body.ready .h-in{opacity:1;transform:none;filter:none;transition:opacity 1.4s va
 
 /* ============================ THE REACH ============================ */
 .reach{position:relative;height:420vh}
-.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;--hw:clamp(104px,19vw,150px)}
-.hand{position:absolute;left:0;top:0;width:var(--hw);height:calc(var(--hw) * 400 / 220);overflow:visible;will-change:transform;pointer-events:none}
-.hand.you{transform-origin:50% 50%}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;--hw:clamp(330px,104vw,780px);--glow:0}
+.hand{position:absolute;left:0;top:0;height:auto;max-width:none;will-change:transform;pointer-events:none;
+  filter:drop-shadow(0 0 calc(6px + 22px * var(--glow)) rgba(255,214,140,calc(.12 + .5 * var(--glow))))}
+.hand.you{width:var(--hw)}
+.hand.god{width:calc(var(--hw) * .709)}
 .flare{
   position:absolute;left:50%;top:44%;width:130vmin;height:130vmin;pointer-events:none;
   background:radial-gradient(circle,rgba(255,236,176,.6) 0%,rgba(255,206,120,.2) 28%,transparent 62%);

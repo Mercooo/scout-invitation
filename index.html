@@ -16,40 +16,9 @@
 </head>
 <body class="locked">
 
-<!-- Shared SVG art (hands, fleur-de-lis, gradients) -->
+<!-- Shared SVG art (fleur-de-lis) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <!-- Fade the sleeve in from nothing, so the hand seems to come out of the light -->
-    <linearGradient id="gGod" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="400">
-      <stop offset="0" stop-color="#fff6d6" stop-opacity="0"/>
-      <stop offset=".24" stop-color="#fff2c4" stop-opacity="1"/>
-      <stop offset="1" stop-color="#ffd27a" stop-opacity="1"/>
-    </linearGradient>
-    <linearGradient id="gYou" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="400">
-      <stop offset="0" stop-color="#cfe0ff" stop-opacity="0"/>
-      <stop offset=".5" stop-color="#d9e6ff" stop-opacity=".95"/>
-      <stop offset="1" stop-color="#a9c4f5" stop-opacity=".95"/>
-    </linearGradient>
-    <filter id="glowGod" filterUnits="userSpaceOnUse" x="-60" y="-60" width="340" height="520">
-      <feGaussianBlur stdDeviation="9" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="glowYou" filterUnits="userSpaceOnUse" x="-60" y="-60" width="340" height="520">
-      <feGaussianBlur stdDeviation="5" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-
-    <!-- A hand, fingers pointing down. Built from round-capped strokes so it reads as a soft shape of light. -->
-    <g id="hand-shape" fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M110 -30 V98" stroke-width="58"/>
-      <path d="M110 104 V148" stroke-width="84"/>
-      <path d="M70 122 C48 138 38 164 46 196" stroke-width="22"/>
-      <path d="M80 170 C78 232 76 292 80 336" stroke-width="20"/>
-      <path d="M104 176 C104 230 104 270 108 310" stroke-width="20"/>
-      <path d="M128 176 C130 226 134 256 140 284" stroke-width="20"/>
-      <path d="M150 172 C154 210 160 236 166 258" stroke-width="19"/>
-    </g>
-
     <!-- Fleur-de-lis (the scouting emblem) -->
     <g id="fleur">
       <path d="M50 6 C61 22 63 40 50 60 C37 40 39 22 50 6Z"/>
@@ -216,12 +185,9 @@
   <div class="stage" id="stage">
     <div class="flare" id="flare"></div>
 
-    <svg class="hand god" id="handGod" viewBox="0 0 220 400" aria-hidden="true">
-      <use href="#hand-shape" stroke="url(#gGod)" filter="url(#glowGod)"/>
-    </svg>
-    <svg class="hand you" id="handYou" viewBox="0 0 220 400" aria-hidden="true">
-      <use href="#hand-shape" stroke="url(#gYou)" filter="url(#glowYou)"/>
-    </svg>
+    <!-- Michelangelo, The Creation of Adam (Sistine Chapel, c. 1512) — public domain. See assets/README.txt -->
+    <img class="hand you" id="handYou" src="assets/hand-adam.png" alt="" width="787" height="256" decoding="async">
+    <img class="hand god" id="handGod" src="assets/hand-god.png" alt="" width="558" height="265" decoding="async">
 
     <div class="touch" id="touch" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
 

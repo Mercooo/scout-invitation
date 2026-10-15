@@ -17,6 +17,10 @@ page to right-to-left with Arabic fonts. The choice is remembered, and phones se
 - Bible quotes in Arabic are from the Smith-Van Dyke translation; replace them in `i18n.js` if your church uses another.
 - If you change English wording in `index.html`, update the matching key in `i18n.js` too.
 
+## The reaching hands
+The two hands in the scroll story are cropped from Michelangelo's *Creation of Adam* (public domain) — see `assets/README.txt`.
+They slide in from the sides and meet at the fingertips, with no sound at the touch.
+
 ## Music
 Drop `assets/music.mp3` in place and it is used automatically. Without it, the site
 synthesises a soft ambient pad + bells. Music starts after the visitor taps
