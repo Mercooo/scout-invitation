@@ -344,7 +344,7 @@
 
     caps.forEach(({ el, a, b }) => el.classList.toggle("on", g >= a && g < b));
 
-    if (g > 0.985 && !touched) { touched = true; touch.classList.add("on"); Sound.chime(); }
+    if (g > 0.985 && !touched) { touched = true; touch.classList.add("on"); }
     else if (g < 0.9 && touched) { touched = false; touch.classList.remove("on"); }
     return g;
   }
